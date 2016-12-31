@@ -1,0 +1,49 @@
+# Welcome to Serverless!
+
+service: api-hbo-go
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+
+functions:
+  account:
+    handler: api/account.handler
+    events:
+      - http:
+          path: account
+          method: get
+  init:
+    handler: api/init.handler
+    events:
+      - http:
+          path: init
+          method: get
+  profile:
+    handler: api/profile.handler
+    events:
+      - http:
+          path: profile
+          method: get
+      - http:
+          path: profile
+          method: put
+  rating:
+    handler: api/rating.handler
+    events:
+      - http:
+          path: rating
+          method: post
+      - http:
+          path: rating/{videoId}
+          method: get
+  search:
+    handler: api/search.handler
+    events:
+      - http:
+          path: search/{query}
+          method: get
