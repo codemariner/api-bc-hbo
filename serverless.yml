@@ -1,6 +1,6 @@
 # pin to exact version to help ensure everyone is using the same version
 # and don't run into problems
-frameworkVersion: "=1.0.3"
+frameworkVersion: "=1.4.0"
 
 service: serverless-example
 
@@ -19,6 +19,17 @@ provider:
       - subnet-c451eae9
       - subnet-0029955b
       - subnet-00a8c249
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "ec2:CreateNetworkInterface"
+        - "ec2:DescribeNetworkInterfaces"
+        - "ec2:DetachNetworkInterface"
+        - "ec2:DeleteNetworkInterface"
+        - 'logs:CreateLogGroup'
+        - 'logs:CreateLogStream'
+        - 'logs:PutLogEvents'
+      Resource: "*"
 
 functions:
   account:
