@@ -1,6 +1,8 @@
-# Welcome to Serverless!
+# pin to exact version to help ensure everyone is using the same version
+# and don't run into problems
+frameworkVersion: "=1.0.3"
 
-service: api-hbo-go
+service: serverless-example
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
@@ -9,6 +11,14 @@ service: api-hbo-go
 provider:
   name: aws
   runtime: nodejs4.3
+  vpc:
+    securityGroupIds:
+      - sg-1629b56b
+    subnetIds:
+      - subnet-9c7da3a0
+      - subnet-c451eae9
+      - subnet-0029955b
+      - subnet-00a8c249
 
 functions:
   account:
